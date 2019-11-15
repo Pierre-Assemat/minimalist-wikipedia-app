@@ -5,12 +5,12 @@
 ### Create docker image
 
 ```
-docker image build -t marvel .
+docker image build -t backend .
 ```
 
 ### Create docker container
 
 ```
-docker container run --publish 8000:8080 --name marvel-container marvel
+docker container run --publish 8000:8000 --name backend-container backend
 ```
 

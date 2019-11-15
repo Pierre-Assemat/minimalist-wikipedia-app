@@ -1,14 +1,17 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
-const PORT = 8080;
+const PORT = 8000;
 const HOST = '0.0.0.0';
 
 const app = express();
 
-app.get('/wiki/summary', (req, res, next) => {
+app.use(cors());
+
+app.get('/wiki/summary/:title', (req, res, next) => {
   console.log('Fetching wikipedia article');
-  const title = req.query.title;
+  const title = req.params.title;
 
   if (title) {
     axios
@@ -21,7 +24,10 @@ app.get('/wiki/summary', (req, res, next) => {
         res.send(result.data);
       })
       .catch(error => {
-        next(error);
+        if (error.response.status !== 404) {
+          next(error);
+        }
+        res.send();
       });
   } else {
     res.send();
