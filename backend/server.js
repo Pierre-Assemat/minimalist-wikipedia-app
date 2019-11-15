@@ -35,7 +35,9 @@ app.get('/wiki/summary/:title', (req, res, next) => {
 });
 
 app.get('/wiki/pdf', (req, res) => {
-  // TODO: Implement PDF get request
+  res.status(404).json({
+    error: `This api endpoint is not yet implemented.`
+  });
 });
 
 app.get('/wiki/XKCD', (req, res, next) => {
