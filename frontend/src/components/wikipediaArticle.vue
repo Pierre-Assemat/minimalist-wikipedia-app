@@ -36,14 +36,12 @@ export default {
   mounted () {
     axios.get('http://0.0.0.0:8000/wiki/summary/XKCD').then(response => {
       if (response.status === 200) {
-        console.log(response.data)
         this.summary = response.data || null
       }
     })
 
     axios.get('http://0.0.0.0:8000/wiki/XKCD').then(response => {
       if (response.status === 200) {
-        console.log(response.data)
         this.img_url = response.data || null
       }
     })
